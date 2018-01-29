@@ -8,7 +8,7 @@
 
 - name: Create discourse installation directory
   file:
-    path: {{DISCOURSE_INSTALLATION_DIR}}
+    path: '{{ DISCOURSE_INSTALLATION_DIR }}'
     state: directory
     owner: root
     group: root
@@ -17,13 +17,13 @@
 - name: Clone discourse docker git repository
   git:
     repo: https://github.com/discourse/discourse_docker.git
-    dest: {{DISCOURSE_INSTALLATION_DIR}}
-    version: {{DISCOURSE_REPO_VERSION}}
+    dest: '{{ DISCOURSE_INSTALLATION_DIR }}'
+    version: '{{ DISCOURSE_REPO_VERSION }}'
   when: folder_init | changed
 
 - name: Copy app configuration template
   template:
-    source: templates/app-template.yml
-    dest: {{DISCOURSE_INSTALLATION_DIR}}/containers/{{DISCOURSE_APP_NAME}}.yml
+    src: templates/app-template.yml
+    dest: '{{DISCOURSE_INSTALLATION_DIR }}/containers/{{ DISCOURSE_APP_NAME }}.yml'
   notify:
-    - Rebuild discourse
+    - rebuild discourse
