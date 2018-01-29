@@ -1,0 +1,12 @@
+---
+- name: rebuild discourse
+  command: './launcher rebuild {{DISCOURSE_APP_NAME}}'
+
+- name: start discourse
+  command: './launcher start {{DISCOURSE_APP_NAME}}'
+
+- name: stop discourse
+  command: './launcher stop {{DISCOURSE_APP_NAME}}'
+
+- name: restart discourse
+  command: './launcher restart {{DISCOURSE_APP_NAME}}'
